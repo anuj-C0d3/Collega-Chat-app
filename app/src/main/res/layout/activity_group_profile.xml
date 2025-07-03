@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    style="@style/mytheme"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/keyboardback"
+    tools:context=".GroupProfile">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/grpimg"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+
+        android:elevation="5dp"
+        android:src="@drawable/defaultuserimg"
+        app:civ_border_color="@android:color/transparent"
+        app:civ_border_width="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="120dp" />
+
+    <Button
+        android:id="@+id/creategrp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Save"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/grouprof"
+        app:layout_constraintTop_toBottomOf="@+id/grouprof" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/join"
+
+        android:layout_width="90dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="2dp"
+        android:background="@drawable/buttongrayborder"
+        android:gravity="center"
+        android:text="Join "
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/creategrp"
+        app:layout_constraintStart_toStartOf="@+id/grouprof"
+        app:layout_constraintTop_toBottomOf="@+id/grouprof" />
+
+    <EditText
+        android:id="@+id/grouprof"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/transbutton"
+        android:gravity="top"
+        android:hint="Description"
+        android:maxWidth="300dp"
+        android:maxHeight="70dp"
+        android:minWidth="350dp"
+
+        android:minHeight="60dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/grpname" />
+
+    <EditText
+        android:id="@+id/grpname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/transparent"
+        android:gravity="center"
+        android:hint="Group Name"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/grpimg"
+        app:layout_constraintStart_toStartOf="@+id/grpimg"
+        app:layout_constraintTop_toBottomOf="@+id/grpimg" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/memberrv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView25"
+        tools:listitem="@layout/memberrvitem" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="63dp"
+        android:text="Members"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/grouprof" />
+
+    <TextView
+        android:id="@+id/cre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Creater"
+        android:textColor="@color/themegreen2"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toEndOf="@+id/grpimg"
+        app:layout_constraintTop_toTopOf="@+id/grpimg" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

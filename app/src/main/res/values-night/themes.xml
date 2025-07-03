@@ -1,0 +1,45 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Collega" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your dark theme here. -->
+         <item name="colorPrimary">@color/dark1</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="activeindicate" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color" >#00FFFFFF</item>
+    </style>
+    <style name="bottomstyle" parent="Widget.Design.BottomNavigationView">
+        <item name="android:background">@drawable/bottombacknight</item>
+        <item name="iconTint">@color/white</item>
+
+    </style>
+    <style name="postback" parent="">
+    <item name="android:background">#0F0F0F</item>
+</style>
+    <style name="mytheme" parent="">
+        <item name="android:background">@color/black</item>
+        <item name="textFillColor">@color/white</item>
+        <item name="android:iconTint">@color/black</item>
+        <item name="android:progressTint">@color/dark1</item>
+    </style>
+
+    <style name="onboardgradientthm" parent="">
+        <item name="android:background">@drawable/gradientbackpurple</item>
+    </style>
+    <style name="buttontheme" parent="">
+        <item name="android:background">@drawable/buttondarktheme</item>
+    </style>
+    <style name="profileback" parent="">
+        <item name="android:background">@drawable/profilebackdark</item>
+        <item name="android:outlineSpotShadowColor">#00BCD4</item>
+    </style>
+    <style name="chatsectiontheme" parent="">
+        <item name="android:background">@color/dark1</item>
+    </style>
+    <style name="sendermessagetheme" parent="">
+        <item name="android:background">@drawable/senderbackdark</item>
+    </style>
+    <style name="receivermsgtheme" parent="">
+        <item name="android:background">@drawable/receiverbackdark</item>
+    </style>
+</resources>

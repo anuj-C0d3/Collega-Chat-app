@@ -1,0 +1,44 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Collega" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+         <item name="colorPrimary">@color/themegreen2</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Theme.Collega" parent="Base.Theme.Collega" />
+    <style name="activeindicate" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color" >#9AE2ED</item>
+    </style>
+    <style name="postback" parent="">
+        <item name="android:background">#F6F6F6</item>
+    </style>
+    <style name="bottomstyle" parent="Widget.Design.BottomNavigationView">
+        <item name="android:background">@drawable/bottomback</item>
+        <item name="android:iconTint">@color/black</item>
+    </style>
+    <style name="mytheme" parent="">
+        <item name="android:background">@color/white</item>
+        <item name="textFillColor">@color/black</item>
+        <item name="android:iconTint">@color/themegreen1</item>
+    </style>
+    <style name="onboardgradientthm" parent="">
+        <item name="android:background">@drawable/gradientbackgreen</item>
+    </style>
+    <style name="buttontheme" parent="">
+        <item name="android:background">@drawable/buttonlighttheme</item>
+    </style>
+    <style name="profileback" parent="">
+        <item name="android:background">@drawable/profilebacklight</item>
+        <item name="android:outlineSpotShadowColor">@color/black</item>
+    </style>
+    <style name="chatsectiontheme" parent="">
+        <item name="android:background">@color/themegreen2</item>
+    </style>
+    <style name="sendermessagetheme" parent="">
+        <item name="android:background">@drawable/senderbacklight</item>
+    </style>
+    <style name="receivermsgtheme" parent="">
+        <item name="android:background">@drawable/receiverbacklight</item>
+    </style>
+</resources>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/chatFragment">
+
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.example.collega.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" >
+        <action
+            android:id="@+id/action_chatFragment_to_studyFragment"
+            app:destination="@id/studyFragment" />
+        <action
+            android:id="@+id/action_chatFragment_to_groupChats"
+            app:destination="@id/groupChats" />
+    </fragment>
+    <fragment
+        android:id="@+id/studyFragment"
+        android:name="com.example.collega.StudyFragment"
+        android:label="fragment_study"
+        tools:layout="@layout/fragment_study" >
+        <action
+            android:id="@+id/action_studyFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.example.collega.GameFragment"
+        android:label="fragment_game"
+        tools:layout="@layout/fragment_game" >
+        <action
+            android:id="@+id/action_gameFragment_to_eventFragment"
+            app:destination="@id/eventFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="com.example.collega.EventFragment"
+        android:label="fragment_event"
+        tools:layout="@layout/fragment_event" >
+        <action
+            android:id="@+id/action_eventFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_eventFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/groupChats"
+        android:name="com.example.collega.GroupChats"
+        android:label="fragment_group_chats"
+        tools:layout="@layout/fragment_group_chats" >
+        <action
+            android:id="@+id/action_groupChats_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+</navigation>

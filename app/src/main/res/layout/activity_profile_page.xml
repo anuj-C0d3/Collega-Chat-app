@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+
+    style="@style/mytheme"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/loginbg"
+    tools:context=".ProfilePage">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="10dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout"
+                    style="@style/profileback"
+                    android:layout_width="470dp"
+                    android:layout_height="170dp"
+                    android:background="@drawable/transparent"
+                    android:elevation="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/adminpnl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/akaya_telivigala"
+                        android:text=" Admin Panel"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profileimg"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:elevation="5dp"
+                    android:src="@drawable/defaultuserimg"
+                    app:civ_border_color="#00BCD4"
+                    app:civ_border_width="2dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/editprof"
+
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@android:color/transparent"
+
+                    android:elevation="10dp"
+                    android:padding="10dp"
+                    android:src="@drawable/editicons"
+                    app:layout_constraintEnd_toEndOf="@+id/profileimg"
+                    app:layout_constraintTop_toTopOf="@+id/profileimg" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView"
+                    android:layout_width="370dp"
+                    android:layout_height="400dp"
+                    android:backgroundTint="@android:color/transparent"
+                    android:elevation="2dp"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="2dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/username">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        style="@style/mytheme"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/buttongrayborder">
+
+                        <TextView
+                            android:id="@+id/textView15"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="25dp"
+                            android:layout_marginBottom="20dp"
+                            android:fontFamily="@font/akaya_telivigala"
+                            android:text="College: "
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/textView14"
+                            app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+                        <TextView
+                            android:id="@+id/textView10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="20dp"
+                            android:fontFamily="@font/akaya_telivigala"
+                            android:text="Tag-line: "
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/textView11"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/textView11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="25dp"
+                            android:fontFamily="@font/akaya_telivigala"
+                            android:text="Graduation:"
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/textView12"
+                            app:layout_constraintStart_toStartOf="@+id/textView10"
+                            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+                        <TextView
+                            android:id="@+id/textView12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="25dp"
+                            android:fontFamily="@font/akaya_telivigala"
+                            android:text="Address: "
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/textView13"
+                            app:layout_constraintStart_toStartOf="@+id/textView11"
+                            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+                        <EditText
+                            android:id="@+id/taglin"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="10dp"
+                            android:background="@android:color/transparent"
+                            android:ems="10"
+                            android:fontFamily="@font/akaya_telivigala"
+                            android:inputType="text"
+                            android:textSize="17sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView10"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/textView10"
+                            app:layout_constraintTop_toTopOf="@+id/textView10" />
+
+                        <EditText
+                            android:id="@+id/graduation"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="5dp"
+                            android:background="@android:color/transparent"
+                            android:ems="10"
+                            android:fontFamily="@font/akaya_telivigala"
+                            android:hint="Highest graduation "
+                            android:inputType="text"
+                            android:textColor="@color/white"
+                            android:textSize="17sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView11"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/textView11"
+                            app:layout_constraintTop_toTopOf="@+id/textView11" />
+
+                        <EditText
+                            android:id="@+id/address"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="10dp"
+                            android:background="@android:color/transparent"
+                            android:ems="10"
+                            android:fontFamily="@font/akaya_telivigala"
+                            android:hint="Address"
+                            android:inputType="text"
+                            android:textColor="@color/white"
+                            android:textSize="17sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView12"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/textView12"
+                            app:layout_constraintTop_toTopOf="@+id/textView12"
+                            app:layout_wrapBehaviorInParent="vertical_only" />
+
+                        <TextView
+                            android:id="@+id/textView13"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="25dp"
+                            android:fontFamily="@font/akaya_telivigala"
+                            android:text="Email Address:"
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/textView14"
+                            app:layout_constraintStart_toStartOf="@+id/textView12"
+                            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+                        <TextView
+                            android:id="@+id/textView14"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="25dp"
+                            android:fontFamily="@font/akaya_telivigala"
+                            android:text="Work: "
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/textView15"
+                            app:layout_constraintStart_toStartOf="@+id/textView13"
+                            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+                        <EditText
+                            android:id="@+id/email"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="5dp"
+                            android:background="@android:color/transparent"
+                            android:ems="10"
+                            android:fontFamily="@font/akaya_telivigala"
+                            android:hint="Email Address"
+                            android:inputType="text"
+                            android:textColor="@color/white"
+                            android:textSize="17sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView13"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/textView13"
+                            app:layout_constraintTop_toTopOf="@+id/textView13" />
+
+                        <EditText
+                            android:id="@+id/work"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="10dp"
+                            android:background="@android:color/transparent"
+                            android:ems="10"
+                            android:fontFamily="@font/akaya_telivigala"
+                            android:hint="Work"
+                            android:inputType="text"
+                            android:textColor="@color/white"
+                            android:textSize="17sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView14"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/textView14"
+                            app:layout_constraintTop_toTopOf="@+id/textView14" />
+
+                        <EditText
+                            android:id="@+id/College"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="10dp"
+                            android:background="@android:color/transparent"
+                            android:ems="10"
+                            android:fontFamily="@font/akaya_telivigala"
+                            android:hint="College"
+                            android:inputType="text"
+                            android:textColor="@color/white"
+                            android:textSize="17sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView15"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/textView15"
+                            app:layout_constraintTop_toTopOf="@+id/textView15" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/savebtn"
+                    style="@style/buttontheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/buttondarktheme"
+                    android:text="Save"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintEnd_toEndOf="@+id/cardView"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+                <Button
+                    android:id="@+id/logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@android:color/transparent"
+                    android:elevation="5dp"
+                    android:text="Logout"
+                    android:textAllCaps="false"
+                    android:textColor="#F44336"
+                    app:cornerRadius="15dp"
+                    app:layout_constraintStart_toStartOf="@+id/cardView"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+                <EditText
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/akaya_telivigala"
+                    android:gravity="center"
+                    android:hint="Username"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    app:layout_constraintEnd_toEndOf="@+id/profileimg"
+                    app:layout_constraintStart_toStartOf="@+id/profileimg"
+                    app:layout_constraintTop_toBottomOf="@+id/profileimg" />
+
+                <ProgressBar
+                    android:id="@+id/profileprogressbar"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:elevation="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

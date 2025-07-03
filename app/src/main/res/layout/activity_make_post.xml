@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    style="@style/mytheme"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MakePostActivity">
+
+    <EditText
+        android:id="@+id/titlete"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Title"
+        android:inputType="text"
+        android:paddingLeft="10dp"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/imagepickicon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/descrip"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+
+        android:autoText="true"
+        android:background="@drawable/buttongrayborder"
+        android:ems="10"
+        android:gravity="top"
+        android:hint="Description..."
+        android:inputType="textMultiLine"
+        android:maxWidth="300dp"
+        android:minHeight="100dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titlete" />
+
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/postVideo"
+        android:layout_width="350dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/transparent"
+        android:backgroundTint="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="@+id/spinner2"
+        app:layout_constraintStart_toStartOf="@+id/spinner2"
+        app:layout_constraintTop_toTopOf="@+id/postimg">
+
+    </com.google.android.exoplayer2.ui.PlayerView>
+
+    <ImageView
+        android:id="@+id/postimg"
+        android:layout_width="350dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        app:tint="#909090"
+        app:layout_constraintEnd_toEndOf="@+id/spinner2"
+        app:layout_constraintStart_toStartOf="@+id/spinner2"
+        app:layout_constraintTop_toBottomOf="@+id/spinner2"
+        app:srcCompat="@drawable/ic_photo_black_48dp" />
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="10dp"
+        android:text="Save"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/uploadcard"
+        android:layout_width="250dp"
+        android:layout_height="140dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/mytheme"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imagepick"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:elevation="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/videopicl"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/imageicon" />
+
+            <ImageView
+                android:id="@+id/videopicl"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:elevation="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/filePick"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/imagepick"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/videoicon" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Photo"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/imagepick"
+                app:layout_constraintStart_toStartOf="@+id/imagepick"
+                app:layout_constraintTop_toBottomOf="@+id/imagepick" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Video"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/videopicl"
+                app:layout_constraintStart_toStartOf="@+id/videopicl"
+                app:layout_constraintTop_toBottomOf="@+id/videopicl" />
+
+            <ImageView
+                android:id="@+id/filePick"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/videopicl"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/doc" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="File"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/filePick"
+                app:layout_constraintStart_toStartOf="@+id/filePick"
+                app:layout_constraintTop_toBottomOf="@+id/filePick" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/imagepickicon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/titlete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/titlete"
+        app:srcCompat="@drawable/imageicon" />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/buttongrayborder"
+        android:paddingLeft="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/descrip"
+        app:layout_constraintStart_toStartOf="@+id/descrip"
+        app:layout_constraintTop_toBottomOf="@+id/descrip" />
+
+    <ProgressBar
+        android:id="@+id/postprogress"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/postprogressper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="%"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/postprogress"
+        app:layout_constraintStart_toStartOf="@+id/postprogress"
+        app:layout_constraintTop_toBottomOf="@+id/postprogress" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
