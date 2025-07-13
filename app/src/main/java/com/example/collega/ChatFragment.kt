@@ -19,18 +19,17 @@ import com.google.firebase.database.*
 import com.squareup.picasso.Picasso
 
 class ChatFragment : Fragment() {
+
     private lateinit var datalist: ArrayList<UserData>
     private lateinit var initlist: ArrayList<UserData>
     private lateinit var binding: FragmentChatBinding
-
-    // Now always initialized in onCreateView
     private lateinit var adapter1: ChatsAdapter
 
     private lateinit var ref: DatabaseReference
     private lateinit var currentUser: String
     private var myprofile: UserData? = null
 
-    private val tempUserList = mutableListOf<UserWithTimestamp>()
+    private val tempUserList = mutableSetOf<UserWithTimestamp>()
     private var totalUsers = 0
     private var processedUsers = 0
 
@@ -46,28 +45,26 @@ class ChatFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentChatBinding.inflate(inflater, container, false)
-        val context = requireContext()
 
-        // 1. Prepare your data lists
+        // Initialize lists
         datalist = ArrayList()
         initlist = ArrayList()
 
-        // 2. RecyclerView setup
-        binding.recyclerview.layoutManager = LinearLayoutManager(context)
-
-        // 3. Initialize the adapter *immediately* with an empty username
-        //    so filterList() never crashes on adapter1.notifyDataSetChanged()
-        adapter1 = ChatsAdapter(context, datalist, "")
+        // RecyclerView setup
+        binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
+        adapter1 = ChatsAdapter(requireContext(), datalist, "")
         binding.recyclerview.adapter = adapter1
 
-        // 4. Now load profiles & chats, and wire up search
+        // Load data
         loadMyProfileAndUsers()
+
+        // Search bar setup
         setupSearch()
 
-        // 5. Profile pic click
+        // Profile click
         binding.imageView.setOnClickListener {
             myprofile?.let {
-                val intent = Intent(context, ProfilePage::class.java).apply {
+                val intent = Intent(requireContext(), ProfilePage::class.java).apply {
                     putExtra("username", it.username)
                     putExtra("email", it.email)
                     putExtra("grad", it.graduation)
@@ -86,27 +83,26 @@ class ChatFragment : Fragment() {
     }
 
     private fun loadMyProfileAndUsers() {
+        // Clear all data
+        datalist.clear()
+        initlist.clear()
+        tempUserList.clear()
+        processedUsers = 0
+        totalUsers = 0
+
         ref.child("users").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 totalUsers = snapshot.childrenCount.toInt()
-                processedUsers = 0
 
                 for (snap in snapshot.children) {
                     val user = snap.getValue(UserData::class.java) ?: continue
 
                     if (user.userId == currentUser) {
-                        // Save your own profile
                         myprofile = user
                         if (!user.profilePic.isNullOrEmpty()) {
                             Picasso.get().load(user.profilePic).into(binding.imageView)
                         }
                         binding.admintext.isVisible = user.work.equals("Admin", true)
-
-                        // **Now that we know your username**, re-create adapter with it:
-                        adapter1 = ChatsAdapter(requireContext(), datalist, user.username)
-                        binding.recyclerview.adapter = adapter1
-
-                        checkIfReadyToShow()
                     } else {
                         getLastMessageTimestamp(user)
                     }
@@ -120,8 +116,11 @@ class ChatFragment : Fragment() {
     }
 
     private fun getLastMessageTimestamp(user: UserData) {
-        // Prevent duplicates
-        if (tempUserList.any { it.userData.userId == user.userId }) return
+        if (tempUserList.any { it.userData.userId == user.userId }) {
+            processedUsers++
+            checkIfReadyToShow()
+            return
+        }
 
         ref.child("chats")
             .child(currentUser)
@@ -134,10 +133,7 @@ class ChatFragment : Fragment() {
                     for (msgSnap in snapshot.children) {
                         lastTimestamp = msgSnap.child("timestamp").getValue(Long::class.java) ?: 0
                     }
-                    // Add only if still not present
-                    if (tempUserList.none { it.userData.userId == user.userId }) {
-                        tempUserList.add(UserWithTimestamp(user, lastTimestamp))
-                    }
+                    tempUserList.add(UserWithTimestamp(user, lastTimestamp))
                     processedUsers++
                     checkIfReadyToShow()
                 }
@@ -150,9 +146,7 @@ class ChatFragment : Fragment() {
     }
 
     private fun checkIfReadyToShow() {
-        // Wait until you have your own profile AND all other users processed
         if (myprofile != null && processedUsers == totalUsers - 1) {
-            // Sort & dedupe
             val sorted = tempUserList
                 .distinctBy { it.userData.userId }
                 .sortedByDescending { it.lastMessageTimestamp }
@@ -163,7 +157,6 @@ class ChatFragment : Fragment() {
             initlist.clear()
             initlist.addAll(datalist)
 
-            // Re-create adapter with final data + your username
             adapter1 = ChatsAdapter(requireContext(), datalist, myprofile!!.username)
             binding.recyclerview.adapter = adapter1
         }

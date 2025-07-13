@@ -62,65 +62,84 @@ enableEdgeToEdge()
         binding.password.setText(intent.getStringExtra("password"))
 
 
-        binding.loginbtn.setOnClickListener{
+        binding.loginbtn.setOnClickListener {
             email = binding.email.text.toString()
             val password = binding.password.text.toString()
-            username = intent.getStringExtra("username").toString()
-            dataref.child("users").addValueEventListener(object : ValueEventListener{
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    for(snap in snapshot.children){
-                        val value = snap.getValue(UserData::class.java)
-                        if(value?.email==email) {
-                            username = value.username
-                            tagline = value.tagline
-                            graduation = value.graduation
-                            email = value.email
-                            college = value.college
-                            work = value.work
-                            uid = value.userId
-                            address = value.address
-                            profilepic = value.profilePic
-                            break
-                        }
-                    }
-                }
-                override fun onCancelled(error: DatabaseError) {
-                }
-            })
 
-            if(email.isEmpty()||password.isEmpty()){
+            if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Please fill all fields.", Toast.LENGTH_SHORT).show()
             } else {
-                auth.signInWithEmailAndPassword(email,password).addOnCompleteListener {
-                    task-> if(task.isSuccessful){
-                        if(!(auth.currentUser!!.isEmailVerified)){
-                            Toast.makeText(this, "Please! click on the link to verify email send to your registered email address.", Toast.LENGTH_LONG).show()
-                        }else {
-                            val userid = auth.currentUser!!.uid
-                            if(username.isEmpty()){
-                                startActivity(Intent(this,MainActivity::class.java).putExtra("uid",userid))
-                                finish()
-                                Toast.makeText(this, "Successfully Logged in", Toast.LENGTH_SHORT).show()
-                            } else {
-                            val userdata = UserData(userid,username,email,graduation,work,tagline,address,college,profilepic)
-                           ref.child("users").child(userid).setValue(userdata).addOnSuccessListener {
+                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val currentUser = auth.currentUser!!
+                        if (!currentUser.isEmailVerified) {
+                            Toast.makeText(this, "Please verify your email first.", Toast.LENGTH_LONG).show()
+                        } else {
+                            val userId = currentUser.uid
+                            val ref = FirebaseDatabase.getInstance().reference
 
-                               FirebaseMessaging.getInstance().token.addOnSuccessListener { token->
-                                   ref.child("usertokens").child(userid).child("token").setValue(token)
-                               }
-                               startActivity(Intent(this,MainActivity::class.java).putExtra("uid",userid))
-                                finish()
-                                Toast.makeText(this, "Complete your profile with login.", Toast.LENGTH_SHORT).show()
-                            }
-                        }}
-                } else {
-                    Toast.makeText(this, "Login failed due to ${task.exception?.message}", Toast.LENGTH_SHORT).show()
-                }
+                            ref.child("users").child(userId)
+                                .addListenerForSingleValueEvent(object : ValueEventListener {
+                                    override fun onDataChange(snapshot: DataSnapshot) {
+                                        if (snapshot.exists()) {
+                                            // Existing profile found
+                                            val user = snapshot.getValue(UserData::class.java)
+                                            if (user != null) {
+                                                username = user.username
+                                                tagline = user.tagline
+                                                graduation = user.graduation
+                                                email = user.email
+                                                college = user.college
+                                                work = user.work
+                                                uid = user.userId
+                                                address = user.address
+                                                profilepic = user.profilePic
+                                            }
 
+                                            FirebaseMessaging.getInstance().token.addOnSuccessListener { token ->
+                                                ref.child("usertokens").child(userId).child("token").setValue(token)
+                                            }
+
+                                            startActivity(Intent(this@LoginPage, MainActivity::class.java).putExtra("uid", userId))
+                                            finish()
+                                            Toast.makeText(this@LoginPage, "Successfully Logged in", Toast.LENGTH_SHORT).show()
+
+                                        } else {
+                                            // No profile found, set default and navigate
+                                            val userData = UserData(
+                                                userId,
+                                                username.ifEmpty { "New User" },
+                                                email,
+                                                graduation,
+                                                work,
+                                                tagline,
+                                                address,
+                                                college,
+                                                profilepic
+                                            )
+                                            ref.child("users").child(userId).setValue(userData).addOnSuccessListener {
+                                                FirebaseMessaging.getInstance().token.addOnSuccessListener { token ->
+                                                    ref.child("usertokens").child(userId).child("token").setValue(token)
+                                                }
+                                                startActivity(Intent(this@LoginPage, MainActivity::class.java).putExtra("uid", userId))
+                                                finish()
+                                                Toast.makeText(this@LoginPage, "Complete your profile with login.", Toast.LENGTH_SHORT).show()
+                                            }
+                                        }
+                                    }
+
+                                    override fun onCancelled(error: DatabaseError) {
+                                        Toast.makeText(this@LoginPage, "Error: ${error.message}", Toast.LENGTH_SHORT).show()
+                                    }
+                                })
+                        }
+                    } else {
+                        Toast.makeText(this, "Login failed due to ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
-
         }
+
         binding.forgotpass.setOnClickListener {
             val email = binding.email.text.toString()
             if (email.isNotEmpty())  {
