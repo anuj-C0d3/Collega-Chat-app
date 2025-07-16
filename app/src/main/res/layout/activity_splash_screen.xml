@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/loginbg"
+    android:background="@drawable/purpleback"
     tools:context=".SplashScreen">
 
     <ImageView
@@ -25,9 +25,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/akronim"
-        android:text="SLAYDGE"
-        android:textColor="#BCBCBC"
+        android:fontFamily="@font/aboreto"
+        android:text="EDGEVERSE"
+        android:textColor="#D3D3D3"
         android:textSize="60sp"
         app:layout_constraintBottom_toBottomOf="@+id/splashlogoimg"
         app:layout_constraintEnd_toEndOf="@+id/splashlogoimg"

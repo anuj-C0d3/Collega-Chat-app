@@ -28,7 +28,7 @@ class SplashScreen : AppCompatActivity() {
         render.setDuration(1000)
         render.start()
         val rendertxt = Render(this)
-        rendertxt.setAnimation(Slide().InDown(splashtext))
+        rendertxt.setAnimation(Slide().InLeft(binding.splashnametext))
         rendertxt.setDuration(1000)
         rendertxt.start()
         Handler().postDelayed({

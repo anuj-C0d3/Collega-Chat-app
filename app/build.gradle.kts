@@ -80,6 +80,8 @@ dependencies {
     implementation ("com.google.auth:google-auth-library-oauth2-http:1.19.0")
     //zoomable photoview
     implementation ("com.github.chrisbanes:PhotoView:2.3.0")
+    implementation ("jp.wasabeef:blurry:4.0.1")
+
 
 
 

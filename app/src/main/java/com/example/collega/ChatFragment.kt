@@ -11,6 +11,8 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import com.example.collega.adapters.ChatsAdapter
 import com.example.collega.data.UserData
 import com.example.collega.databinding.FragmentChatBinding
@@ -52,6 +54,17 @@ class ChatFragment : Fragment() {
 
         // RecyclerView setup
         binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerview.addOnScrollListener(object : OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (dy > 3) {
+                    val mainActivity = activity as MainActivity
+                    mainActivity.hideBottomNavigation()
+                } else if(dy<=1){
+                    val mainActivity = activity as MainActivity
+                    mainActivity.showBottomNavigation()
+                }
+            }
+        })
         adapter1 = ChatsAdapter(requireContext(), datalist, "")
         binding.recyclerview.adapter = adapter1
 

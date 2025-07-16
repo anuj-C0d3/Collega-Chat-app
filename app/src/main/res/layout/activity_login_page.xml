@@ -6,7 +6,7 @@
     style="@style/mytheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/loginbg"
+    android:background="@drawable/bg1"
     tools:context=".LoginPage">
 
     <ScrollView

@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    android:background="@drawable/loginbg"
+    android:background="@drawable/bg1"
     android:padding="10dp"
     tools:context=".SignUpPage">
 
@@ -138,6 +138,7 @@
                     android:layout_width="90dp"
                     android:layout_height="90dp"
                     android:layout_marginTop="20dp"
+                    android:tint="#FFFFFF"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
